@@ -1,21 +1,23 @@
 
 import React from 'react-native'
 import styles from '../Styles/GameScreenStyle'
+import ControlPanel from '../Components/ControlPanel'
+import GameBoard from '../Components/GameBoard'
 
 const {
   View,
-  Text,
   Component
 } = React
 
-export default class GameScreen extends Component {
+class GameScreen extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
+        <ControlPanel />
+        <GameBoard />
       </View>
     )
   }
 }
+
+export default GameScreen

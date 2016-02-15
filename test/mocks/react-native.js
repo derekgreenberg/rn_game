@@ -9,6 +9,16 @@ RN.StyleSheet = {
   create: (style) => style
 }
 
+RN.Dimensions = {
+  get: (item) => {
+    // iPhone 6 dimensions
+    return {
+      width: 375,
+      height: 667
+    }
+  }
+}
+
 const createComponent = (type) => {
   return React.createClass({
     displayName: type,
