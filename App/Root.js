@@ -1,6 +1,6 @@
 'use strict'
 
-import GameScreen from './Screens/GameScreen'
+import GameScreen from './Components/GameScreen'
 import { Provider } from 'react-redux'
 import configureStore from './Store/ConfigureStore'
 

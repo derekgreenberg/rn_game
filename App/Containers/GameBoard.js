@@ -1,6 +1,6 @@
 import React from 'react-native'
 import Metrics from '../Theme/Metrics'
-import GameTile from './GameTile'
+import GameTile from '../Components/GameTile'
 import styles from '../Styles/GameBoardStyle'
 import {connect} from 'react-redux'
 import * as actions from '../Actions/ActionCreators'

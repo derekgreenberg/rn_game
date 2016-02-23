@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, mount, describeWithDOM } from 'enzyme'
 import { expect } from 'chai'
-import GameBoard from '../../App/Components/GameBoard'
+import GameBoard from '../../App/Containers/GameBoard'
 import GameTile from '../../App/Components/GameTile'
 import configureStore from '../../App/Store/ConfigureStore'
 import { Provider } from 'react-redux'

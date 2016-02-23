@@ -2,7 +2,7 @@
 import React from 'react-native'
 import styles from '../Styles/GameScreenStyle'
 import ControlPanel from '../Components/ControlPanel'
-import GameBoard from '../Components/GameBoard'
+import GameBoard from '../Containers/GameBoard'
 
 const {
   View,

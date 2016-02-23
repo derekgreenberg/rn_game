@@ -1,9 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
-import GameScreen from '../../App/Screens/GameScreen'
+import GameScreen from '../../App/Components/GameScreen'
 import ControlPanel from '../../App/Components/ControlPanel'
-import GameBoard from '../../App/Components/GameBoard'
+import GameBoard from '../../App/Containers/GameBoard'
 
 describe('<GameScreen />', () => {
   it('renders a ControlPanel and a GameBoard', () => {
