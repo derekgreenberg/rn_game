@@ -1,6 +1,6 @@
 import React from 'react-native'
-import Metrics from '../Theme/Metrics'
-import styles from '../Styles/GameTileStyle'
+import Styles from '../Styles/GameTileStyle'
+import Constants from '../Lib/Constants'
 
 const {
   Component,
@@ -10,9 +10,17 @@ const {
 } = React
 
 class GameTile extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      owner: Constants.PLAYER_A,
+      orientation: Constants.UP
+    }
+  }
+
   render () {
     return (
-      <View style={styles.container}><Text>x</Text></View>
+      <View style={Styles.container}><Text>x</Text></View>
     )
   }
 }

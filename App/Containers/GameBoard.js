@@ -1,7 +1,7 @@
 import React from 'react-native'
 import Metrics from '../Theme/Metrics'
 import GameTile from '../Components/GameTile'
-import styles from '../Styles/GameBoardStyle'
+import Styles from '../Styles/GameBoardStyle'
 import {connect} from 'react-redux'
 import * as actions from '../Actions/ActionCreators'
 
@@ -39,7 +39,7 @@ class GameBoard extends Component {
     const maxRows = Math.floor(gameBoardHeight / Metrics.tileDimension)
     const rows = []
     for (let r = 0; r < maxRows; r++) {
-      let element = <View key={`row_${r}`} style={styles.row}>{this.renderColumn(r)}</View>
+      let element = <View key={`row_${r}`} style={Styles.row}>{this.renderColumn(r)}</View>
       rows.push(element)
     }
     return rows
@@ -47,7 +47,7 @@ class GameBoard extends Component {
 
   render () {
     return (
-      <View style={styles.tilesContainer}>
+      <View style={Styles.tilesContainer}>
         {
          this.renderTiles()
         }

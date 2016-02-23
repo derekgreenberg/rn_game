@@ -1,5 +1,5 @@
 import React from 'react-native'
-import styles from '../Styles/ControlPanelStyle'
+import Styles from '../Styles/ControlPanelStyle'
 
 const {
   Component,
@@ -10,7 +10,7 @@ const {
 class ControlPanel extends Component {
   render () {
     return (
-      <View style={styles.container}>
+      <View style={Styles.container}>
         <Text>hey there</Text>
         <Text>hi there</Text>
         <Text>ho there</Text>
