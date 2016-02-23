@@ -2,13 +2,25 @@ import React from 'react-native'
 import Metrics from '../Theme/Metrics'
 import GameTile from './GameTile'
 import styles from '../Styles/GameBoardStyle'
+import {connect} from 'react-redux'
+import * as actions from '../Actions/ActionCreators'
 
 const {
   Component,
-  View
+  View,
+  PropTypes
 } = React
 
 class GameBoard extends Component {
+
+  constructor (props) {
+    super(props)
+    this.tileCount = 0
+  }
+
+  componentDidMount () {
+    this.props.dispatch(actions.initializeGame(this.tileCount))
+  }
 
   renderColumn (row) {
     const maxColumns = Math.floor(Metrics.screenWidth / Metrics.tileDimension)
@@ -17,6 +29,7 @@ class GameBoard extends Component {
       let id = `row_${row}_col_${col}`
       let element = <GameTile key={id} ref={id} row={row} column={col} />
       tiles.push(element)
+      this.tileCount++
     }
     return tiles
   }
@@ -43,4 +56,8 @@ class GameBoard extends Component {
   }
 }
 
-export default GameBoard
+GameBoard.propTypes = {
+  dispatch: PropTypes.func.isRequired
+}
+
+export default connect()(GameBoard)

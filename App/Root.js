@@ -1,6 +1,10 @@
 'use strict'
 
 import GameScreen from './Screens/GameScreen'
+import { Provider } from 'react-redux'
+import configureStore from './Store/ConfigureStore'
+
+const store = configureStore()
 
 import React, {
   Component
@@ -9,7 +13,9 @@ import React, {
 export default class Root extends Component {
   render () {
     return (
-      <GameScreen />
+      <Provider store={store}>
+        <GameScreen />
+      </Provider>
     )
   }
 }
