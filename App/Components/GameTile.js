@@ -4,6 +4,7 @@ import Constants from '../Lib/Constants'
 import Images from '../Theme/Images'
 import Colors from '../Theme/Colors'
 import {getRandomInt} from '../Lib/ViewHelpers'
+import R from 'ramda'
 
 const {
   Component,
@@ -63,15 +64,17 @@ class GameTile extends Component {
     }
   }
 
-  canPress (owner) {
-    // will eventually test against the owner and the current player
-    return true
+  canPress () {
+    const owner = this.state.owner
+    const {currentPlayer, gameInProgress} = this.props
+    const canClaimOwnership = () => R.equals(owner, currentPlayer) || R.equals(owner, Constants.UNOWNED)
+    return gameInProgress && canClaimOwnership()
   }
 
   updateOwner () {
-    // set the owner to the current owner.
-    // we don't have that passed in yet, so fake it for now
-    this.setState({owner: Constants.PLAYER_A})
+    // set the owner to the current player.
+    const {currentPlayer} = this.props
+    this.setState({owner: currentPlayer})
   }
 
   updateOrientation () {
@@ -141,7 +144,9 @@ class GameTile extends Component {
 
 GameTile.propTypes = {
   row: PropTypes.number,
-  column: PropTypes.number
+  column: PropTypes.number,
+  currentPlayer: PropTypes.string,
+  gameInProgress: PropTypes.bool
 }
 
 export default GameTile

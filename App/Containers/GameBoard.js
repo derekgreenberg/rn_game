@@ -24,10 +24,11 @@ class GameBoard extends Component {
 
   renderColumn (row) {
     const maxColumns = Math.floor(Metrics.screenWidth / Metrics.tileDimension)
+    const { currentPlayer, gameInProgress } = this.props.gameBoard
     const tiles = []
     for (let col = 0; col < maxColumns; col++) {
       let id = `row_${row}_col_${col}`
-      let element = <GameTile key={id} ref={id} row={row} column={col} />
+      let element = <GameTile key={id} ref={id} row={row} column={col} currentPlayer={currentPlayer} gameInProgress={gameInProgress} />
       tiles.push(element)
       this.tileCount++
     }
@@ -57,7 +58,14 @@ class GameBoard extends Component {
 }
 
 GameBoard.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  gameBoard: PropTypes.object
 }
 
-export default connect()(GameBoard)
+const mapStateToProps = (state, myProps) => {
+  return {
+    gameBoard: state.gameBoard
+  }
+}
+
+export default connect(mapStateToProps)(GameBoard)
