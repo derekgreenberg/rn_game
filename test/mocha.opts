@@ -1,2 +1,4 @@
 --compilers js:test/compile.js
 --require test/setup.js
+--slow 500
+--reporter list

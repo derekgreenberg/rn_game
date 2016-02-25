@@ -37,6 +37,7 @@ RN.TextInput = createComponent('TextInput')
 RN.ActivityIndicatorIOS = createComponent('ActivityIndicatorIOS')
 RN.Image = createComponent('Image')
 RN.TouchableHighlight = createComponent('TouchableHighlight')
+RN.TouchableWithoutFeedback = createComponent('TouchableWithoutFeedback')
 RN.ScrollView = createComponent('ScrollView')
 
 export default RN

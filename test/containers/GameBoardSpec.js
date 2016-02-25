@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, mount, describeWithDOM } from 'enzyme'
+import { mount, describeWithDOM } from 'enzyme'
 import { expect } from 'chai'
 import GameBoard from '../../App/Containers/GameBoard'
 import GameTile from '../../App/Components/GameTile'
@@ -17,4 +17,3 @@ describe('<GameBoard />', () => {
     })
   })
 })
-
