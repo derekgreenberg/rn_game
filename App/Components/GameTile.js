@@ -117,7 +117,6 @@ class GameTile extends Component {
   }
 
   tileColor () {
-    console.log(this.state.owner)
     switch (this.state.owner) {
       case Constants.UNOWNED:
         return Colors.unowned

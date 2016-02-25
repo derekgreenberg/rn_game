@@ -16,16 +16,19 @@ class GameBoard extends Component {
   constructor (props) {
     super(props)
     this.tileCount = 0
+    this.maxColumns = 0
+    this.maxRows = 0
   }
 
   componentDidMount () {
-    this.props.dispatch(actions.initializeGame(this.tileCount))
+    this.props.dispatch(actions.initializeGame(this.tileCount, this.maxRows, this.maxColumns))
   }
 
   renderColumn (row) {
     const maxColumns = Math.floor(Metrics.screenWidth / Metrics.tileDimension)
     const { currentPlayer, gameInProgress } = this.props.gameBoard
     const tiles = []
+    this.maxColumns = maxColumns
     for (let col = 0; col < maxColumns; col++) {
       let id = `row_${row}_col_${col}`
       let element = <GameTile key={id} ref={id} row={row} column={col} currentPlayer={currentPlayer} gameInProgress={gameInProgress} />
@@ -39,6 +42,7 @@ class GameBoard extends Component {
     const gameBoardHeight = Metrics.screenHeight - Metrics.statusBarHeight - Metrics.controlPanelHeight
     const maxRows = Math.floor(gameBoardHeight / Metrics.tileDimension)
     const rows = []
+    this.maxRows = maxRows
     for (let r = 0; r < maxRows; r++) {
       let element = <View key={`row_${r}`} style={Styles.row}>{this.renderColumn(r)}</View>
       rows.push(element)
