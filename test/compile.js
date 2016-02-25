@@ -9,9 +9,16 @@ require.extensions['.js'] = function (module, fileName) {
   if (fileName.indexOf('node_modules/react-native/Libraries/react-native/react-native.js') >= 0) {
     fileName = path.resolve('./test/mocks/react-native.js')
   }
+
+  // Stop images
+  if (fileName.indexOf('Theme/Images.js') >= 0) {
+    fileName = path.resolve('./test/mocks/Images.js')
+  }
+
   if (fileName.indexOf('node_modules/') >= 0) {
     return (origJs || require.extensions['.js'])(module, fileName)
   }
+
   var src = fs.readFileSync(fileName, 'utf8')
   output = babel.transform(src, {
     filename: fileName
