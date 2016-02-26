@@ -18,10 +18,17 @@ class GameBoard extends Component {
     this.tileCount = 0
     this.maxColumns = 0
     this.maxRows = 0
+    this.handleTilePress = this.handleTilePress.bind(this)
   }
 
   componentDidMount () {
-    this.props.dispatch(actions.initializeGame(this.tileCount, this.maxRows, this.maxColumns))
+    const {dispatch} = this.props
+    dispatch(actions.initializeGame(this.tileCount, this.maxRows, this.maxColumns))
+  }
+
+  handleTilePress (row, column, owner, orientation) {
+    const {dispatch} = this.props
+    dispatch(actions.tileTaken(row, column, owner, orientation))
   }
 
   renderColumn (row) {
@@ -31,7 +38,15 @@ class GameBoard extends Component {
     this.maxColumns = maxColumns
     for (let col = 0; col < maxColumns; col++) {
       let id = `row_${row}_col_${col}`
-      let element = <GameTile key={id} ref={id} row={row} column={col} currentPlayer={currentPlayer} gameInProgress={gameInProgress} />
+      let element = <GameTile
+                      key={id}
+                      ref={id}
+                      row={row}
+                      column={col}
+                      currentPlayer={currentPlayer}
+                      gameInProgress={gameInProgress}
+                      onTilePress={this.handleTilePress}
+                    />
       tiles.push(element)
       this.tileCount++
     }

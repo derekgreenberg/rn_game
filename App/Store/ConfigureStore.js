@@ -1,7 +1,11 @@
 import { createStore, applyMiddleware } from 'redux'
 import RootReducer from '../Reducers/'
-import createLogger from 'redux-logger'
 import R from 'ramda'
+
+// middleware that injects into the store chain
+import createLogger from 'redux-logger'
+import sagaMiddleWare from 'redux-saga'
+import sagas from '../Sagas'
 
 const LOGGING_BLACKLIST = ['EFFECT_RESOLVED', 'EFFECT_TRIGGERED', 'EFFECT_REJECTED']
 
@@ -21,6 +25,7 @@ const logger = createLogger({
 // NOTE:  it's important that logger is last apparently.
 // https://github.com/fcomb/redux-logger/issues/20
 const finalCreateStore = applyMiddleware(
+  sagaMiddleWare(...sagas),
   logger
 )(createStore)
 

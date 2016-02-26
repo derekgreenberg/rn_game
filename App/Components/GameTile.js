@@ -58,9 +58,11 @@ class GameTile extends Component {
   }
 
   handlePress () {
+    const {onTilePress, row, column, currentPlayer} = this.props
     if (this.canPress()) {
       this.updateOrientation()
       this.updateOwner()
+      onTilePress(row, column, currentPlayer, this.state.orientation)
     }
   }
 
@@ -145,7 +147,8 @@ GameTile.propTypes = {
   row: PropTypes.number,
   column: PropTypes.number,
   currentPlayer: PropTypes.string,
-  gameInProgress: PropTypes.bool
+  gameInProgress: PropTypes.bool,
+  onTilePress: PropTypes.func
 }
 
 export default GameTile
