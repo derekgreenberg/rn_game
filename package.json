@@ -6,7 +6,7 @@
     "start": "node_modules/react-native/packager/packager.sh",
     "lint": "standard --verbose | snazzy",
     "newclear": "rm -rf node_modules/ && npm prune && npm i",
-    "test": "mocha --opts test/mocha.opts test/**/*.js"
+    "test": "mocha --opts test/mocha.opts --require babel-polyfill test/**/*.js"
   },
   "standard": {
     "parser": "babel-eslint",
@@ -16,6 +16,7 @@
     ]
   },
   "dependencies": {
+    "babel": "^6.5.2",
     "lodash": "^4.3.0",
     "ramda": "^0.19.1",
     "react-native": "^0.20.0",
@@ -26,6 +27,7 @@
     "seamless-immutable": "^5.0.1"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.5.0",
     "chai": "^3.5.0",
     "enzyme": "1.2.0",
     "mocha": "^2.4.5",
